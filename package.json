@@ -1,0 +1,33 @@
+{
+  "name": "tsh-node-workshop",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "docker-compose -f docker-compose.yml up -d tsh-app tsh-todo-list",
+    "dev": "docker-compose up tsh-app tsh-todo-list",
+    "down": "docker-compose down -v",
+    "logs": "docker-compose logs -f",
+    "monit": "pm2 monit",
+    "docker-build": "bash -c 'docker build -t tsh-node-workshop:latest .'",
+    "lint": "docker-compose run --rm js ./node_modules/.bin/eslint ./src",
+    "format": "docker-compose run --rm js ./node_modules/.bin/prettier --write \"./src/**/*.js\"",
+    "shell": "docker-compose run --rm js sh"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "eslint": "^5.15.3",
+    "eslint-config-prettier": "^4.1.0",
+    "pm2": "^3.4.1",
+    "prettier": "^1.16.4"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.16.4",
+    "helmet": "^3.16.0",
+    "morgan": "^1.9.1"
+  }
+}

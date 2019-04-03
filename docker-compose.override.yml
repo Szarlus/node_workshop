@@ -1,0 +1,15 @@
+version: "3.5"
+
+services:
+  js:
+    image: tsh-node-workshop:latest
+    volumes: &volumes
+      - ./:/dir:delegated
+  tsh-app:
+    volumes: *volumes
+    command: [bash, -c, "pm2-dev ./src/tsh-app/index.js"]
+  tsh-todo-list:
+    volumes: *volumes
+    command: [bash, -c, "pm2-dev ./src/tsh-todo-list/index.js"]
+    ports:
+      - "3005:50050"

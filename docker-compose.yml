@@ -1,0 +1,10 @@
+version: "3.5"
+services:
+  js:
+    image: tsh-node-workshop:latest
+  tsh-app:
+    image: tsh-node-workshop:latest
+    command: [bash, -c, "node ./src/tsh-app/index.js"]
+  tsh-todo-list:
+    image: tsh-node-workshop:latest
+    command: [bash, -c, "node ./src/tsh-todo-list/index.js"]
