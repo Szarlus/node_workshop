@@ -3,9 +3,11 @@ const { createRouting } = require("../routes/routing");
 const config = require("./config");
 const { errorHandler } = require("./error.handler");
 const { NotFoundError } = require("../errors/not-found.error");
+const { ValidationError } = require("../errors/validation.error");
 const morgan = require("morgan");
 const helmet = require("helmet");
 const cors = require("cors");
+const { errors, isCelebrate } = require("celebrate");
 
 class Server {
   constructor() {
@@ -35,6 +37,15 @@ class Server {
     this.app.use("*", (req, res, next) => {
       next(new NotFoundError("Page not found"));
     });
+
+    this.app.use((error, req, res, next) => {
+      if (isCelebrate(error)) {
+        next(new ValidationError(error.details));
+        return;
+      }
+    });
+
+    // this.app.use(errors());
 
     this.app.use(errorHandler);
   }
