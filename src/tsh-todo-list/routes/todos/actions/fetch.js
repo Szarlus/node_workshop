@@ -1,5 +1,5 @@
 const todosRepository = require("../repository/todos.repository");
-const NotFoundError = require("../../../errors/not-found.error");
+const { NotFoundError } = require("../../../errors/not-found.error");
 
 module.exports = async (req, res, next) => {
   const todo = await todosRepository.findOne(req.params.id);

@@ -1,10 +1,9 @@
 const express = require("express");
-const { createTodosRouting } = require("./todos/todos.routing");
 
-const createRouting = () => {
+const createRouting = ({ todosRouting }) => {
   const router = new express.Router();
 
-  router.use("/todos", createTodosRouting());
+  router.use("/todos", todosRouting);
 
   return router;
 };
