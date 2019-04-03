@@ -6,7 +6,7 @@ class CommandBus {
   }
 
   async handle(command) {
-    const handler = this.handler.find(handler => handler.supports(command));
+    const handler = this.handlers.find(handler => handler.supports(command));
 
     if (!handler) {
       throw new AppError(`Command is not supported`);
