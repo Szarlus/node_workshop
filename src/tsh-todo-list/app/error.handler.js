@@ -1,10 +1,11 @@
 const { HttpError } = require("../errors/http.error");
 const { ValidationError } = require("../errors/validation.error");
 const { AppError } = require("../errors/app.error");
+const { logger } = require("./logger");
 
 const errorHandler = (error, req, res, next) => {
   // eslint-disable-next-line
-  console.log(error);
+  logger.error(error.message, error);
 
   if (error instanceof ValidationError) {
     res.status(error.status).json({

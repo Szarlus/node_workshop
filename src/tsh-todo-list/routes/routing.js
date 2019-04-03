@@ -1,6 +1,7 @@
 const express = require("express");
 const { AppError } = require("../errors/app.error");
 const { Joi, celebrate } = require("celebrate");
+const { logger } = require("../app/logger");
 
 const createRouting = () => {
   const router = new express.Router();
@@ -24,7 +25,7 @@ const createRouting = () => {
     ],
     (req, res) => {
       // eslint-disable-next-line
-      console.log(req.body);
+      logger.info(req.body);
 
       res.json(req.body);
     }

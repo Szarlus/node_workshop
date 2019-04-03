@@ -8,6 +8,7 @@ const morgan = require("morgan");
 const helmet = require("helmet");
 const cors = require("cors");
 const { errors, isCelebrate } = require("celebrate");
+const { logger } = require("./logger");
 
 class Server {
   constructor() {
@@ -20,14 +21,14 @@ class Server {
 
     this.app.use((req, res, next) => {
       // eslint-disable-next-line
-      console.log(req.path);
+      logger.info(req.path);
 
       next();
     });
 
     this.app.use((req, res, next) => {
       // eslint-disable-next-line
-      console.log("next middleware");
+      logger.info("next middleware");
 
       next();
     });
