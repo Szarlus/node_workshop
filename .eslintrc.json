@@ -1,0 +1,16 @@
+{
+  "extends": ["eslint:recommended", "prettier"],
+  "rules": {
+    "no-extra-semicolon": false,
+    "no-empty-interface": false,
+    "object-literal-sort-keys": false
+  },
+  "parserOptions": {
+    "ecmaVersion": 2017
+  },
+  "env": {
+    "node": true,
+    "es6": true,
+    "jest": true
+  }
+}
