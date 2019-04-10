@@ -2,9 +2,19 @@ version: "3.5"
 services:
   js:
     image: tsh-node-workshop:latest
+    depends_on:
+      - todos-db
   tsh-app:
     image: tsh-node-workshop:latest
     command: [bash, -c, "node ./src/tsh-app/index.js"]
   tsh-todo-list:
     image: tsh-node-workshop:latest
     command: [bash, -c, "node ./src/tsh-todo-list/index.js"]
+    depends_on:
+      - todos-db
+  todos-db:
+    image: postgres
+    environment:
+      POSTGRES_DB: todos
+      POSTGRES_USER: todos
+      POSTGRES_PASSWORD: password
