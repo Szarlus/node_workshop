@@ -1,4 +1,4 @@
-const { server } = require("./app/container");
+const container = require("./app/container");
 const { logger } = require("./app/logger");
 
 process.on("uncaughtException", error => {
@@ -11,4 +11,4 @@ process.on("unhandledRejection", error => {
   process.exit(1);
 });
 
-server.start();
+container.resolve("server").start();

@@ -17,4 +17,4 @@ class TodosRepository {
   }
 }
 
-module.exports = new TodosRepository();
+module.exports = TodosRepository;
