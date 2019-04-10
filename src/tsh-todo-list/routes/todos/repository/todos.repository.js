@@ -5,13 +5,14 @@ class TodosRepository {
 
   async add(todo) {
     this.todos.push(todo);
+    console.log(this.todos);
   }
 
   async findOne(id) {
     return this.todos.find(t => t.id === id);
   }
 
-  async findAll() {
+  async all() {
     return this.todos;
   }
 }

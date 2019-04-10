@@ -1,8 +1,8 @@
 const express = require("express");
-const todoValidator = require("./validators/todo.validator");
 const { celebrate } = require("celebrate");
+const todoValidator = require("./validators/todo.validator");
 
-const createTodosRouting = ({ create, fetch, fetchAll }) => {
+const createTodosRouting = ({ create, fetch, fetchList }) => {
   const router = new express.Router();
 
   router.post(
@@ -15,8 +15,7 @@ const createTodosRouting = ({ create, fetch, fetchAll }) => {
     create
   );
 
-  router.get("/", fetchAll);
-
+  router.get("/", fetchList);
   router.get("/:id", fetch);
 
   return router;

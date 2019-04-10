@@ -8,5 +8,5 @@ module.exports = async (req, res, next) => {
     return res.status(200).json(todo);
   }
 
-  next(new NotFoundError(`Todo of id : ${req.params.id} does not exist`));
+  next(new NotFoundError(`Todo of id :${req.params.id} not exists`));
 };

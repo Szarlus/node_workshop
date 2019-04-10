@@ -1,6 +1,6 @@
 const winston = require("winston");
 
-const logFormat = winston.format.printf((level, message, meta) => {
+const logFormat = winston.format.printf(({ level, message, meta }) => {
   return JSON.stringify({
     "@timestamp": new Date().toISOString(),
     "@version": 1,
@@ -15,7 +15,7 @@ const logFormat = winston.format.printf((level, message, meta) => {
 });
 
 const winstonLogger = winston.createLogger({
-  level: process.env.LOGGING_LEVEL | "debug",
+  level: process.env.LOGGIN_LEVEL || "debug",
   format: logFormat,
   transports: [new winston.transports.Console()]
 });

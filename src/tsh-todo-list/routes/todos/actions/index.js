@@ -1,9 +1,9 @@
 const create = require("./create");
 const fetch = require("./fetch");
-const fetchAll = require("./fetch-all");
+const fetchList = require("./fetchList");
 
 module.exports = ({ todosRepository }) => ({
-  create,
   fetch,
-  fetchAll: fetchAll(todosRepository)
+  create,
+  fetchList: fetchList(todosRepository)
 });

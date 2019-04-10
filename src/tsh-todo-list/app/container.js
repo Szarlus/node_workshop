@@ -14,4 +14,6 @@ const server = new Server({
   })
 });
 
-module.exports = { server };
+module.exports = {
+  server
+};

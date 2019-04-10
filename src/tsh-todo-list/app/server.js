@@ -19,14 +19,12 @@ class Server {
     this.app.use(express.json());
 
     this.app.use((req, res, next) => {
-      // eslint-disable-next-line
       logger.info(req.path);
 
       next();
     });
 
     this.app.use((req, res, next) => {
-      // eslint-disable-next-line
       logger.info("next middleware");
 
       next();
@@ -43,8 +41,9 @@ class Server {
         next(new ValidationError(error.details));
         return;
       }
-    });
 
+      next(error);
+    });
     // this.app.use(errors());
 
     this.app.use(errorHandler);

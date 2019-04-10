@@ -7,18 +7,18 @@ class CreateTodoHandler {
     this.todosRepository = todosRepository;
   }
 
+  supports(command) {
+    return command.type === CreateTodoCommand.TYPE;
+  }
+
   async handle(command) {
     const todo = new Todo(command.id, command.name);
 
     try {
       await this.todosRepository.add(todo);
-    } catch (error) {
+    } catch (e) {
       throw new AppError("Could not create a new task");
     }
-  }
-
-  supports(command) {
-    return command.type === CreateTodoCommand.TYPE;
   }
 }
 
