@@ -1,4 +1,4 @@
-const container = require("./app/container");
+const createContainer = require("./app/container");
 const { logger } = require("./app/logger");
 
 process.on("uncaughtException", error => {
@@ -11,4 +11,7 @@ process.on("unhandledRejection", error => {
   process.exit(1);
 });
 
-container.resolve("server").start();
+(async () => {
+  const container = await createContainer();
+  container.resolve("server").start();
+})();
