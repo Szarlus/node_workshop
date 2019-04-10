@@ -25,6 +25,7 @@
     "prettier": "^1.16.4"
   },
   "dependencies": {
+    "awilix": "^4.2.1",
     "celebrate": "^9.1.0",
     "cors": "^2.8.5",
     "express": "^4.16.4",
