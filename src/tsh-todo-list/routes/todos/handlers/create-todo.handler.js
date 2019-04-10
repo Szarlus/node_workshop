@@ -1,5 +1,5 @@
 const CreateTodoCommand = require("../commands/create-todo.command");
-const Todo = require("../model/todo");
+const { Todo } = require("../model/todo");
 const { AppError } = require("../../../errors/app.error");
 
 class CreateTodoHandler {
@@ -15,7 +15,7 @@ class CreateTodoHandler {
     const todo = new Todo(command.id, command.name);
 
     try {
-      await this.todosRepository.add(todo);
+      await this.todosRepository.insert(todo);
     } catch (e) {
       throw new AppError("Could not create a new task");
     }

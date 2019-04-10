@@ -18,3 +18,9 @@ services:
       POSTGRES_DB: todos
       POSTGRES_USER: todos
       POSTGRES_PASSWORD: password
+    depends_on:
+      - adminer
+  adminer:
+    image: adminer
+    ports:
+      - "8080:8080"
