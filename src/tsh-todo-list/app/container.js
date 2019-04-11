@@ -19,7 +19,8 @@ module.exports = async () => {
     todosRepository: awilix.asValue(await dbConnection.getRepository(Todo)),
     commandBus: awilix.asFunction(createCommandBus).singleton(),
     todosRouting: awilix.asFunction(createTodosRouting).singleton(),
-    routing: awilix.asFunction(createRouting).singleton()
+    routing: awilix.asFunction(createRouting).singleton(),
+    dbConnection: awilix.asValue(dbConnection)
   });
 
   return container;

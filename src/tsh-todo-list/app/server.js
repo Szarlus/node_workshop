@@ -52,6 +52,10 @@ class Server {
   start() {
     this.app.listen(config.port);
   }
+
+  getApp() {
+    return this.app;
+  }
 }
 
 module.exports = Server;
